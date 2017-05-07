@@ -1,0 +1,177 @@
+i {
+    font-style: normal;
+}
+
+.clearfix::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.helper::before{
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.calendar{
+    border: 1px solid #ccc;
+    font-size: 16px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.calendar .calendar-side{
+    float: left;
+    padding-top: 30px;
+    width: 30px;
+}
+
+.calendar .calendar-side .cs-item-active{
+    color: #ff0000;
+}
+
+.calendar .calendar-box{
+    float: left;
+    box-sizing: border-box;
+    width: 212px;
+}
+
+.calendar .c-pannel .cp-list{
+    float: left;
+    width: 50%;
+}
+
+.calendar .c-pannel .cp-item{
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+.calendar .c-pannel .cp-prev-year,
+.calendar .c-pannel .cp-prev-month{
+    float: left;
+    width: 25px;
+}
+
+.calendar .c-pannel .cp-next-year,
+.calendar .c-pannel .cp-next-month{
+    float: right;
+    width: 25px;
+}
+
+.calendar .c-pannel .cp-year,
+.calendar .c-pannel .cp-month{
+    margin: 0 25px;
+}
+
+.calendar .c-header .ch-item{
+    float: left;
+    width: 30px;
+}
+
+.calendar .c-content{
+    font-size: 14px;
+}
+
+.calendar .c-content .cc-item{
+    float: left;
+    width: 30px;
+    height: 26px;
+    line-height: 26px;
+    cursor: pointer;
+}
+
+.calendar .c-content .cc-month-item{
+    float: left;
+    width: 53px;
+    height: 52px;
+    line-height: 52px;
+    cursor: pointer;
+}
+
+.calendar .c-content .disabled{
+    color: #c0c0c0;
+}
+
+.calendar .c-content .active{
+    color: #008000;
+}
+
+.calendar .c-content .select{
+    color: #fff;
+    background-color: #ff6600;
+}
+
+.calendar .c-content .cur{
+    color: #ff0000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

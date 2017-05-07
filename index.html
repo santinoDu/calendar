@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        input {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+hh
+<input type="text" id="calendar"/>
+<div>sdfsfa</div>
+<input style="float: right;" type="text" id="calendar2"/>
+<script src="dist/bundle.js"></script>
+<script>
+    var el = document.getElementById('calendar')
+    var flag = true
+    var calendar = new Calendar(el,
+        {
+            data: '2017-5-7',
+            dayStart: 1,
+            mode: 'week',
+            selectMode: 'all',
+            disableFuture: true,
+            pickerCb (data) {
+                console.log(data, 'cbbb')
+            },
+            renderCb (data, options) {
+                console.log(data, 'rrr')
+            }
+        })
+    var calendar2 = new Calendar(document.getElementById('calendar2'), {
+        disablePast: true
+    })
+</script>
+</body>
+</html>

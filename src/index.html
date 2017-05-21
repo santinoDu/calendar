@@ -8,15 +8,17 @@
             width: 200px;
         }
     </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+hh
 <div style="position: relative">
     <input type="text" id="calendar"/>
 </div>
 <div>sdfsfa</div>
 <input style="float: right;" type="text" id="calendar2"/>
 <div style="height: 300px"></div>
-<script src="dist/bundle.js"></script>
+<script src="js/main.js"></script>
 <script>
     var el = document.getElementById('calendar')
     var flag = true
@@ -24,7 +26,7 @@
         {
             data: '2017-5-7',
             dayStart: 1,
-            mode: 'week',
+            mode: 'day',
             selectMode: {
                 type: ['day', 'week', 'month'],
                 text: ['自然日', '自然周', '自然年']
@@ -38,7 +40,7 @@
             }
         })
     var calendar2 = new Calendar(document.getElementById('calendar2'), {
-        timePicker: true,
+        timePicker: false,
         pickerCb (data) {
             console.log(data, 'cbbb')
         }

@@ -24,8 +24,12 @@ i {
 
 .calendar .calendar-side{
     float: left;
-    padding-top: 30px;
-    width: 30px;
+}
+
+.calendar .calendar-side .cs-item{
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    cursor: pointer;
 }
 
 .calendar .calendar-side .cs-item-active{
@@ -35,12 +39,23 @@ i {
 .calendar .calendar-box{
     float: left;
     box-sizing: border-box;
-    width: 212px;
+    border-left: 1px solid #ddd;
+    width: 211px;
+}
+
+.calendar .calendar-box .c-header{
+    font-size: 12px;
+    line-height: 2;
+    background-color: #555;
+    color: #fff;
+}
+
+.calendar .c-pannel{
+    display: flex;
 }
 
 .calendar .c-pannel .cp-list{
-    float: left;
-    width: 50%;
+    flex: 1;
 }
 
 .calendar .c-pannel .cp-item{
@@ -78,15 +93,22 @@ i {
 
 .calendar .c-content .cc-item{
     float: left;
+    box-sizing: border-box;
+    border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
     width: 30px;
     height: 26px;
     line-height: 26px;
     cursor: pointer;
 }
 
+.calendar .c-content .cc-item:nth-child(7n){
+    border-right: none;
+}
+
 .calendar .c-content .cc-month-item{
     float: left;
-    width: 53px;
+    width: 25%;
     height: 52px;
     line-height: 52px;
     cursor: pointer;
@@ -97,7 +119,7 @@ i {
 }
 
 .calendar .c-content .active{
-    color: #008000;
+    color: #07e007;
 }
 
 .calendar .c-content .select{
@@ -109,68 +131,17 @@ i {
     color: #ff0000;
 }
 
+.calendar .c-time{
+    border-top: 1px solid #ddd;
+    padding: 5px 0;
+    font-size: 12px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.calendar .c-time input{
+    box-sizing: border-box;
+    padding-left: 5px;
+    width: 30px;
+}
 
 
 

@@ -1,5 +1,32 @@
 import frame from './../template/frame.js'
 import css from './../css/style.css'
+// const frame = `<div class="calendar clearfix">
+//     <div class="calendar-box">
+//         <div class="c-pannel">
+//             <div class="cp-list">
+//                 <span class="cp-item cp-prev-year"><</span>
+//                 <span class="cp-item cp-next-year">></span>
+//                 <span class="cp-item cp-year"></span>
+//             </div>
+//             <div class="cp-list cp-month-operator">
+//                 <span class="cp-item cp-prev-month"><</span>
+//                 <span class="cp-item cp-next-month">></span>
+//                 <span class="cp-item cp-month"></span>
+//             </div>
+//         </div>
+//         <div class="c-header clearfix"></div>
+//         <div class="c-content clearfix"></div>
+//         <div class="c-time clearfix">
+//             <i>时间选择</i>
+//             <input type="text" value="00" min="0" max="23" class="c-hour">
+//             <i>:</i>
+//             <input type="text" value="00" min="0" max="59" class="c-minute">
+//             <i>:</i>
+//             <input type="text" value="00" min="0" max="59" class="c-second">
+//             <a href="javascript:;" class="c-confirm">确定</a>
+//         </div>
+//     </div>
+// </div>`
 
 const utils = {
     isBubblingToEle (target, type, value) {
@@ -17,15 +44,21 @@ const utils = {
         return false
     },
     getElPos (el) {
-        let pos = el.getBoundingClientRect()
-        let sx = window.scrollX ? window.scrollX : window.pageXOffset
-        let sy = window.scrollY ? window.scrollY : window.pageYOffset
+        let width = el.offsetWidth
+        let height = el.offsetHeight
+        let x = 0
+        let y = 0
+        while (el) {
+            x += el.offsetLeft
+            y += el.offsetTop
+            el = el.offsetParent
+        }
 
         return {
-            left: pos.left + sx,
-            top: pos.top + sy,
-            right: pos.right + sx,
-            bottom: pos.bottom + sx
+            left: x,
+            top: y,
+            right: x + width,
+            bottom: y + height
         }
     },
     classNameOperator (selector, operatorType, className) {
@@ -64,23 +97,23 @@ class DateMethod {
 
     getNextMonth (year, month) {
         let time = month === 11 ? {
-            month: 0,
-            year: year + 1
-        } : {
-            month: month + 1,
-            year
-        }
+                month: 0,
+                year: year + 1
+            } : {
+                month: month + 1,
+                year
+            }
         return time
     }
 
     getPrevMonth (year, month) {
         let time = month === 0 ? {
-            month: 11,
-            year: Math.max(year - 1, this.yearOrigin)
-        } : {
-            month: month - 1,
-            year
-        }
+                month: 11,
+                year: Math.max(year - 1, this.yearOrigin)
+            } : {
+                month: month - 1,
+                year
+            }
         return time
     }
 
@@ -98,7 +131,7 @@ class DateMethod {
 
     getTime (value) {
         return typeof value === 'number' ? value :
-                typeof value === 'string' ? new Date(value) : value.getTime()
+            typeof value === 'string' ? new Date(value) : value.getTime()
     }
 
     isBetween (value, start, end) {
@@ -121,12 +154,12 @@ class DateMethod {
         let now = new Date()
         let nowValue = now.getTime()
         options = Object.assign(defaults, options)
-        if (options.disablePast) {
+        if (this.options.disablePast) {
             let rangeBegin = options.rangeBegin
             options.rangeBegin = rangeBegin ? Math.max(nowValue, this.getTime(rangeBegin)) : nowValue
         }
 
-        if (options.disableFuture) {
+        if (this.options.disableFuture) {
             let rangeEnd = options.rangeEnd
             options.rangeEnd = rangeEnd ? Math.min(nowValue, this.getTime(rangeEnd)) : nowValue
         }
@@ -214,7 +247,9 @@ class Calendar extends DateMethod {
             data: now,
             pickerCb () {},
             type: 'day',
-            selectMode: ['day']
+            selectMode: { type: ['day'] },
+            disablePast: false,
+            disableFuture: false
         }
 
         this.options = Object.assign(defaults, options)
@@ -223,10 +258,17 @@ class Calendar extends DateMethod {
         let dateObj = this.getDateObj(data)
 
         this.day = dateObj.day
+        this.activeDay = this.day
         this.defineProperty('month', dateObj.month, () => this.render())
         this.defineProperty('year', dateObj.year, () => this.render())
         this.defineProperty('mode', null, () => this.render())
         this.daySort = this.getDaySort()
+        this.dataCb = {
+            startYear: this.year,
+            startMonth: this.month,
+            startDay: this.day,
+            value: this.formatDate(this.year, this.month, this.day)
+        }
         this.init()
         this.initEvent()
     }
@@ -258,12 +300,17 @@ class Calendar extends DateMethod {
         let monthEl = calendarEl.getElementsByClassName('cp-month')[0]
         let yearEl = calendarEl.getElementsByClassName('cp-year')[0]
         let daysEl = calendarEl.getElementsByClassName('c-content')[0]
-        calendarEl.getElementsByClassName('c-header')[0].innerHTML = this.getHeaderHtml()
+        let monthOperatorEl = calendarEl.getElementsByClassName('cp-month-operator')[0]
+        let weekEl = calendarEl.getElementsByClassName('c-header')[0]
+
+
+        weekEl.innerHTML = this.getHeaderHtml()
 
         this.calendarEl = calendarEl
         this.monthEl = monthEl
         this.yearEl = yearEl
         this.daysEl = daysEl
+
         this.render()
         if (sideSelectEl) {
             calendarRoot.insertBefore(sideSelectEl, calendarRoot.children[0])
@@ -273,7 +320,15 @@ class Calendar extends DateMethod {
                 if (mode) {
                     utils.classNameOperator(sideSelectEl.querySelector('.cs-item-active'), 'remove', 'cs-item-active')
                         .classNameOperator(target, 'add', 'cs-item-active')
+                    if (mode === 'month') {
+                        monthOperatorEl.style.display = 'none'
+                        weekEl.style.display = 'none'
+                    } else {
+                        monthOperatorEl.style.display = 'block'
+                        weekEl.style.display = 'block'
+                    }
                     this.mode = mode
+
                 }
             })
             let modeEls = calendarRoot.children[0].querySelector('[data-type="'+ this.options.mode +'"]')
@@ -286,12 +341,56 @@ class Calendar extends DateMethod {
             }
         })
         let indexEl = this.daysEl.children[index]
-        indexEl && (setTimeout(() => {indexEl.click()}))
+        indexEl && (setTimeout(() => {
+            this.firstPickCbFlag = true
+            indexEl.click()
+            this.firstPickCbFlag = false
+        }))
     }
 
     initEvent () {
         const isBubblingToEle = utils.isBubblingToEle
         let pannel = this.calendarEl.getElementsByClassName('c-pannel')[0]
+        let timeEl = this.calendarEl.getElementsByClassName('c-time')[0]
+
+        if (this.options.timePicker) {
+            let inputs = timeEl.querySelectorAll('input')
+            inputs.forEach(input => {
+                input.addEventListener('focus', function () {
+                    this.setSelectionRange(0, this.value.length)
+                })
+                input.addEventListener('input', function () {
+                    let value = parseInt(this.value.replace(/[^\d.]/g, '') || 0)
+                    let max = parseInt(this.getAttribute('max'))
+                    let min = parseInt(this.getAttribute('min'))
+                    value = value < min ? min :
+                        value > max ? max : value
+                    this.value = value
+                })
+            })
+
+            let getTimeArr = () => {
+                return [].slice.call(inputs).map(input => this.zero(parseInt(input.value)))
+            }
+
+            timeEl.querySelector('.c-confirm').addEventListener('click', () => {
+                let value = this.formatDate(this.year, this.month + 1, this.activeDay)
+                let timeArr = getTimeArr()
+                let hour = timeArr[0]
+                let minute = timeArr[1]
+                let second = timeArr[2]
+                let data = Object.assign(this.dataCb, {
+                    hour,
+                    minute,
+                    second
+                }, { startDay: this.activeDay})
+                let timeStr = `${hour}:${minute}:${second}`
+                this.pickDone(`${value} ${timeStr}`, data, !0)
+            })
+        } else {
+            timeEl.parentNode.removeChild(timeEl)
+        }
+
         pannel.addEventListener('click', (e) => {
             let target = e.target
             if (isBubblingToEle(target, 'className', 'cp-prev-year')) {
@@ -352,13 +451,10 @@ class Calendar extends DateMethod {
                     data = {startYear, startMonth, startDay, value}
                     utils.classNameOperator(children, 'remove', 'active').classNameOperator(children[index], 'add', 'active')
                 }
+                this.activeDay = startDay
             }
-            if (value) {
-                this.el.value = value
-                this.hideCalendar()
-                data.mode = this.mode
-                this.options.pickerCb(data)
-            }
+
+            value && this.pickDone(value, data, !this.options.timePicker)
         })
 
         this.daysEl.addEventListener('mouseover', (e) => {
@@ -413,23 +509,30 @@ class Calendar extends DateMethod {
         })
     }
 
+    pickDone (value, data, hide) {
+        this.el.value = value
+        this.dataCb = data
+        hide && this.hideCalendar()
+        data.mode = this.mode
+        !this.firstPickCbFlag && this.options.pickerCb(data)
+    }
+
     sideSelectHandle () {
-        let mode = this.options.selectMode
+        let selectMode = this.options.selectMode
+        let mode = selectMode.type
+        let text = selectMode.text
+        if (!mode) return
         mode = typeof mode === 'string' ? [mode] : mode
-        let modeAll = ['day', 'week', 'month']
-        if (mode[0] === 'all') {
-            mode = modeAll
-        }
+
         let sideEl
         if (mode.length !== 1) {
             let div = document.createElement('div')
             div.className = 'calendar-side'
-            modeAll.forEach((val, index) => {
+            mode.forEach((val, index) => {
                 let item = document.createElement('div')
                 let content
                 item.className = 'cs-item' + (index === 0 ? ' cs-item-active' : '')
-                content = val === 'day' ? '日' :
-                            val === 'week' ? '周' : '月'
+                content = text[index]
                 item.innerHTML = content
                 item.setAttribute('data-type', val)
                 div.appendChild(item)
@@ -500,7 +603,9 @@ class Calendar extends DateMethod {
             let disabled
             for (let i = 1; i <= 12; i++) {
                 className = (dateObj.year === this.year && dateObj.month === i - 1) ? ' cur' : ''
-                disabled = !(this.year < dateObj.year || this.year === dateObj.year && i - 1 < dateObj.month)
+                disabled =  this.options.disableFuture ? !(this.year < dateObj.year || this.year === dateObj.year && i - 1 <= dateObj.month)
+                            : this.options.disablePast ? !(this.year > dateObj.year || this.year === dateObj.year && i - 1 >= dateObj.month)
+                            : false
                 className += disabled ? ' disabled' : ''
                 daysHtml += `<i class="cc-month-item${className}">${i}</i>`
                 days.push({

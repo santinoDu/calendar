@@ -3,13 +3,13 @@ i {
 }
 
 .clearfix::after {
-    content: '';
+    content: "";
     display: table;
     clear: both;
 }
 
 .helper::before{
-    content: '';
+    content: "";
     display: inline-block;
     height: 100%;
     vertical-align: middle;
@@ -38,6 +38,8 @@ i {
 
 .calendar .calendar-box{
     float: left;
+    position: relative;
+    left: -1px;
     box-sizing: border-box;
     border-left: 1px solid #ddd;
     width: 211px;

@@ -37,13 +37,20 @@ hh
             },
             renderCb (data, options) {
                 console.log(data, 'rrr')
-            }
+            },
+            defaultFill: true
         })
     var calendar2 = new Calendar(document.getElementById('calendar2'), {
-        timePicker: false,
+        timePick: true,
         pickerCb (data) {
             console.log(data, 'cbbb')
-        }
+        },
+        renderCb (data) {
+            console.log(data)
+        },
+        data: 1496732400000,
+        defaultFill: true,
+        align: 'right'
     })
 </script>
 </body>

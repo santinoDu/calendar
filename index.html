@@ -16,7 +16,7 @@
 <div>sdfsfa</div>
 <input style="float: right;" type="text" id="calendar2"/>
 <div style="height: 300px"></div>
-<script src="dist/bundle.js"></script>
+<script src="dist/calendar.js"></script>
 <script>
     var el = document.getElementById('calendar')
     var flag = true
@@ -35,14 +35,22 @@
             },
             renderCb (data, options) {
                 console.log(data, 'rrr')
-            }
+            },
+            defaultFill: false
         })
     var calendar2 = new Calendar(document.getElementById('calendar2'), {
-        timePicker: true,
+        timePick: true,
         pickerCb (data) {
             console.log(data, 'cbbb')
-        }
+        },
+        defaultFill: true,
+        disableSelect: true
     })
+
+    npm publish --tag 0.1.0
+    npm http PUT https://registry.npmjs.org/x-calendar
+        npm http 201 https://registry.npmjs.org/x-calendar
+        + x-calendar@0.0.1
 </script>
 </body>
 </html>

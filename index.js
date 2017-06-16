@@ -1,32 +1,40 @@
-import frame from './../template/frame.js'
-import css from './../css/style.css'
-// const frame = `<div class="calendar clearfix">
-//     <div class="calendar-box">
-//         <div class="c-pannel">
-//             <div class="cp-list">
-//                 <span class="cp-item cp-prev-year"><</span>
-//                 <span class="cp-item cp-next-year">></span>
-//                 <span class="cp-item cp-year"></span>
-//             </div>
-//             <div class="cp-list cp-month-operator">
-//                 <span class="cp-item cp-prev-month"><</span>
-//                 <span class="cp-item cp-next-month">></span>
-//                 <span class="cp-item cp-month"></span>
-//             </div>
-//         </div>
-//         <div class="c-header clearfix"></div>
-//         <div class="c-content clearfix"></div>
-//         <div class="c-time clearfix">
-//             <i>时间选择</i>
-//             <input type="text" value="00" min="0" max="23" class="c-hour">
-//             <i>:</i>
-//             <input type="text" value="00" min="0" max="59" class="c-minute">
-//             <i>:</i>
-//             <input type="text" value="00" min="0" max="59" class="c-second">
-//             <a href="javascript:;" class="c-confirm">确定</a>
-//         </div>
-//     </div>
-// </div>`
+const css = '.clearfix::after,.helper::before{content:""}i{font-style:normal}.clearfix::after{display:table;clear:both}.helper::before{display:inline-block;height:100%;vertical-align:middle}.calendar{border:1px solid #ccc;font-size:16px;text-align:center;background-color:#fff}.calendar .calendar-side{float:left}.calendar .calendar-side .cs-item{border-bottom:1px solid #ddd;padding:10px;cursor:pointer}.calendar .calendar-side .cs-item-active{color:red}.calendar .calendar-box{float:left;position:relative;left:-1px;box-sizing:border-box;border-left:1px solid #ddd;width:211px}.calendar .calendar-box .c-header{font-size:12px;line-height:2;background-color:#555;color:#fff}.calendar .c-pannel{display:flex}.calendar .c-pannel .cp-list{flex:1}.calendar .c-pannel .cp-item{display:block;height:30px;line-height:30px;cursor:pointer}.calendar .c-pannel .cp-prev-month,.calendar .c-pannel .cp-prev-year{float:left;width:25px}.calendar .c-pannel .cp-next-month,.calendar .c-pannel .cp-next-year{float:right;width:25px}.calendar .c-pannel .cp-month,.calendar .c-pannel .cp-year{margin:0 25px}.calendar .c-header .ch-item{float:left;width:30px}.calendar .c-content{font-size:14px}.calendar .c-content .cc-item{float:left;box-sizing:border-box;border-top:1px solid #ddd;border-right:1px solid #ddd;width:30px;height:26px;line-height:26px;cursor:pointer}.calendar .c-content .cc-item:nth-child(7n){border-right:none}.calendar .c-content .cc-month-item{float:left;width:25%;height:52px;line-height:52px;cursor:pointer}.calendar .c-content .disabled{color:silver}.calendar .c-content .active{color:#07e007}.calendar .c-content .select{color:#fff;background-color:#f60}.calendar .c-content .cur{color:red}.calendar .c-time{border-top:1px solid #ddd;padding:5px 0;font-size:12px}.calendar .c-time input{box-sizing:border-box;padding-left:5px;width:30px}'
+
+const frame = `<div class="calendar clearfix">
+    <div class="calendar-box">
+        <div class="c-pannel">
+            <div class="cp-list">
+                <span class="cp-item cp-prev-year"><</span>
+                <span class="cp-item cp-next-year">></span>
+                <span class="cp-item cp-year"></span>
+            </div>
+            <div class="cp-list cp-month-operator">
+                <span class="cp-item cp-prev-month"><</span>
+                <span class="cp-item cp-next-month">></span>
+                <span class="cp-item cp-month"></span>
+            </div>
+        </div>
+        <div class="c-header clearfix">
+
+        </div>
+        <div class="c-content clearfix">
+
+        </div>
+        <div class="c-time clearfix">
+            <i>时间选择</i>
+            <input type="text" value="00" min="0" max="23" class="c-hour">
+            <i>:</i>
+            <input type="text" value="00" min="0" max="59" class="c-minute">
+            <i>:</i>
+            <input type="text" value="00" min="0" max="59" class="c-second">
+            <a href="javascript:;" class="c-confirm">确定</a>
+        </div>
+    </div>
+</div>`
+
+let cssEl = document.createElement('style')
+cssEl.innerHTML = css
+document.getElementsByTagName('head')[0].appendChild(cssEl)
 
 const utils = {
     isBubblingToEle (target, type, value) {
@@ -97,23 +105,23 @@ class DateMethod {
 
     getNextMonth (year, month) {
         let time = month === 11 ? {
-                month: 0,
-                year: year + 1
-            } : {
-                month: month + 1,
-                year
-            }
+            month: 0,
+            year: year + 1
+        } : {
+            month: month + 1,
+            year
+        }
         return time
     }
 
     getPrevMonth (year, month) {
         let time = month === 0 ? {
-                month: 11,
-                year: Math.max(year - 1, this.yearOrigin)
-            } : {
-                month: month - 1,
-                year
-            }
+            month: 11,
+            year: Math.max(year - 1, this.yearOrigin)
+        } : {
+            month: month - 1,
+            year
+        }
         return time
     }
 
@@ -257,6 +265,7 @@ class Calendar extends DateMethod {
             dayStart: 0,
             data: now,
             pickerCb () {},
+            renderCb () {},
             type: 'day',
             selectMode: { type: ['day'] },
             disablePast: false,
@@ -657,8 +666,8 @@ class Calendar extends DateMethod {
             for (let i = 1; i <= 12; i++) {
                 className = (dateObj.year === this.year && dateObj.month === i - 1) ? ' cur' : ''
                 disabled =  this.options.disableFuture ? !(this.year < dateObj.year || this.year === dateObj.year && i - 1 <= dateObj.month)
-                            : this.options.disablePast ? !(this.year > dateObj.year || this.year === dateObj.year && i - 1 >= dateObj.month)
-                            : false
+                    : this.options.disablePast ? !(this.year > dateObj.year || this.year === dateObj.year && i - 1 >= dateObj.month)
+                        : false
                 className += disabled ? ' disabled' : ''
                 daysHtml += `<i class="cc-month-item${className}">${i}</i>`
                 days.push({
@@ -695,7 +704,4 @@ class Calendar extends DateMethod {
     }
 }
 
-window.Calendar = Calendar
-
-
-
+module.exports = Calendar

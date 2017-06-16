@@ -6,7 +6,7 @@ module.exports = {
         main: './src/js/main.js'
     },
     output: {
-        filename: 'bundle.js',
+        filename: 'calendar.js',
         path: path.resolve(__dirname, 'dist')
     },
     module: {

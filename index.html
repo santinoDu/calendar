@@ -22,9 +22,9 @@
     var flag = true
     var calendar = new Calendar(el,
         {
-            data: '2017-5-7',
+            data: '2017,05,07',
             dayStart: 1,
-            mode: 'week',
+            type: 'week',
             selectMode: {
                 type: ['day', 'week', 'month'],
                 text: ['自然日', '自然周', '自然年']
@@ -35,22 +35,20 @@
             },
             renderCb (data, options) {
                 console.log(data, 'rrr')
-            },
-            defaultFill: false
+            }
         })
     var calendar2 = new Calendar(document.getElementById('calendar2'), {
         timePick: true,
         pickerCb (data) {
             console.log(data, 'cbbb')
         },
-        defaultFill: true,
-        disableSelect: true
+        selectMode: {
+            type: ['day', 'week', 'month']
+        },
+        type: 'week',
+        defaultFill: true
     })
 
-    npm publish --tag 0.1.0
-    npm http PUT https://registry.npmjs.org/x-calendar
-        npm http 201 https://registry.npmjs.org/x-calendar
-        + x-calendar@0.0.1
 </script>
 </body>
 </html>

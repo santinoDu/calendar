@@ -7,7 +7,9 @@ module.exports = {
     },
     output: {
         filename: 'calendar.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        library: 'Calendar',
+        libraryTarget: 'umd'
     },
     module: {
         rules: [
@@ -33,7 +35,6 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.optimize.UglifyJsPlugin()
+        new webpack.HotModuleReplacementPlugin()
     ]
 };

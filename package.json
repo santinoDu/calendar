@@ -1,6 +1,6 @@
 {
   "name": "x-calendar",
-  "version": "0.0.4",
+  "version": "0.0.8",
   "description": "A js calendar library, whick can pick time, day, week or month",
   "main": "index.js",
   "scripts": {

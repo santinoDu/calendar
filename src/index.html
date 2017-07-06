@@ -7,16 +7,21 @@
         input {
             width: 200px;
         }
+        .test{
+            position: fixed;
+        }
     </style>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body style="height: 2000px;">
 hh
-<div style="position: relative">
+<div class="test">
     <input type="text" id="calendar"/>
 </div>
 <div>sdfsfa</div>
-<input style="float: right;" type="text" id="calendar2"/>
+<div class="test">
+    <input style="float: right;" type="text" id="calendar2"/>
+</div>
 <div style="height: 300px"></div>
 <script src="js/main.js"></script>
 <script>
@@ -26,30 +31,31 @@ hh
         {
             data: '2017-5-7',
             dayStart: 1,
-            mode: 'day',
+            type: 'week',
             selectMode: {
                 type: ['day', 'week', 'month'],
                 text: ['自然日', '自然周', '自然年']
             },
-            disableFuture: true,
+            disablePast: true,
             pickerCb (data) {
                 console.log(data, 'cbbb')
             },
             renderCb (data, options) {
                 console.log(data, 'rrr')
             },
-            defaultFill: true
+            defaultFill: false
         })
     var calendar2 = new Calendar(document.getElementById('calendar2'), {
-        timePick: true,
         pickerCb (data) {
             console.log(data, 'cbbb')
         },
         renderCb (data) {
             console.log(data)
         },
-        data: 1496732400000,
-        defaultFill: true,
+        type: 'week',
+        date: 1496732400000,
+        disablePast: true,
+        defaultFill: false,
         align: 'right'
     })
 </script>

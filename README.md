@@ -30,7 +30,7 @@ or
       monthNames: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
       dayNames: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
       dayStart: 0,
-      data: now,
+      date: now,
       pickerCb () {},
       renderCb () {},
       type: 'day',

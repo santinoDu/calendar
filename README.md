@@ -37,6 +37,8 @@ or
       selectMode: { type: ['day'] },
       disablePast: false,
       disableFuture: false,
+      rangeEnd: '2018-03-28',
+      rangeBegin: '2018-03-25',
       timePick: false,
       defaultFill: true,
       align: 'left',

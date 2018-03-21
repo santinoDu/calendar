@@ -1,32 +1,32 @@
-// import frame from './../template/frame.js'
-// import css from './../css/style.css'
-const frame = `<div class="calendar clearfix">
-    <div class="calendar-box">
-        <div class="c-pannel">
-            <div class="cp-list">
-                <span class="cp-item cp-prev-year"><</span>
-                <span class="cp-item cp-next-year">></span>
-                <span class="cp-item cp-year"></span>
-            </div>
-            <div class="cp-list cp-month-operator">
-                <span class="cp-item cp-prev-month"><</span>
-                <span class="cp-item cp-next-month">></span>
-                <span class="cp-item cp-month"></span>
-            </div>
-        </div>
-        <div class="c-header clearfix"></div>
-        <div class="c-content clearfix"></div>
-        <div class="c-time clearfix">
-            <i>时间选择</i>
-            <input type="text" value="00" min="0" max="23" class="c-hour">
-            <i>:</i>
-            <input type="text" value="00" min="0" max="59" class="c-minute">
-            <i>:</i>
-            <input type="text" value="00" min="0" max="59" class="c-second">
-            <a href="javascript:;" class="c-confirm">确定</a>
-        </div>
-    </div>
-</div>`
+import frame from './../template/frame.js'
+import css from './../css/style.css'
+// const frame = `<div class="calendar clearfix">
+//     <div class="calendar-box">
+//         <div class="c-pannel">
+//             <div class="cp-list">
+//                 <span class="cp-item cp-prev-year"><</span>
+//                 <span class="cp-item cp-next-year">></span>
+//                 <span class="cp-item cp-year"></span>
+//             </div>
+//             <div class="cp-list cp-month-operator">
+//                 <span class="cp-item cp-prev-month"><</span>
+//                 <span class="cp-item cp-next-month">></span>
+//                 <span class="cp-item cp-month"></span>
+//             </div>
+//         </div>
+//         <div class="c-header clearfix"></div>
+//         <div class="c-content clearfix"></div>
+//         <div class="c-time clearfix">
+//             <i>时间选择</i>
+//             <input type="text" value="00" min="0" max="23" class="c-hour">
+//             <i>:</i>
+//             <input type="text" value="00" min="0" max="59" class="c-minute">
+//             <i>:</i>
+//             <input type="text" value="00" min="0" max="59" class="c-second">
+//             <a href="javascript:;" class="c-confirm">确定</a>
+//         </div>
+//     </div>
+// </div>`
 
 const utils = {
     isBubblingToEle (target, type, value) {
@@ -64,12 +64,8 @@ const utils = {
     },
     classNameOperator (selector, operatorType, className) {
         let nodeType = {}.toString.call(selector).slice(8, -1)
-        if (nodeType === 'HTMLCollection') {
+        if (nodeType === 'HTMLCollection' || nodeType === 'NodeList' || nodeType === 'Array') {
             [].slice.call(selector).forEach((node) => {
-                node.classList[operatorType](className)
-            })
-        } else if (nodeType === 'NodeList' || nodeType === 'Array') {
-            selector.forEach((node) => {
                 node.classList[operatorType](className)
             })
         } else {
@@ -168,21 +164,26 @@ class DateMethod {
             year: null,
             month: null,
             value: null,
-            rangeBegin: null,
-            rangeEnd: null,
+            rangeBegin: this.options.rangeBegin,
+            rangeEnd: this.options.rangeEnd,
             disablePast: false,
             disableFuture: false
         }
         let now = new Date()
         let nowValue = this.getDayBeginTime(now)
         options = Object.assign(defaults, options)
-        if (this.options.disablePast) {
-            let rangeBegin = options.rangeBegin
+
+        let rangeBegin = options.rangeBegin
+        if (rangeBegin) {
+            options.rangeBegin = this.getTime(rangeBegin)
+        } else if (this.options.disablePast) {
             options.rangeBegin = rangeBegin ? Math.max(nowValue, this.getTime(rangeBegin)) : nowValue
         }
 
-        if (this.options.disableFuture) {
-            let rangeEnd = options.rangeEnd
+        let rangeEnd = options.rangeEnd
+        if (rangeEnd) {
+            options.rangeEnd = this.getTime(rangeEnd)
+        } else if (this.options.disableFuture) {
             options.rangeEnd = rangeEnd ? Math.min(nowValue, this.getTime(rangeEnd)) : nowValue
         }
 
@@ -274,7 +275,9 @@ class Calendar extends DateMethod {
             timePick: false,
             defaultFill: true,
             align: 'left',
-            disableSelect: false
+            disableSelect: false,
+            rangeEnd: '',
+            rangeBegin: '',
         }
 
         this.options = Object.assign(defaults, options)
@@ -520,6 +523,8 @@ class Calendar extends DateMethod {
             let children = this.daysEl.children
             let index = [].indexOf.call(this.daysEl.children, target)
             if (index === -1) return
+            classNameOperator(this.daysEl.querySelectorAll('.select'), 'remove', 'select')
+
             if (this.mode === 'week') {
                 let rows = Math.floor(index / 7)
                 let begin = rows * 7
@@ -606,6 +611,9 @@ class Calendar extends DateMethod {
     }
 
     showCalendar () {
+        Array.prototype.slice.call(document.querySelectorAll('.calendar')).forEach(node => {
+            node.parentNode.style.display = 'none'
+        })
         let pos = utils.getElPos(this.el)
         let align = this.options.align
         let alignValue = align === 'right' ? pos.right : pos.left
@@ -659,7 +667,8 @@ class Calendar extends DateMethod {
         let className
         let daysHtml = ''
         let now = new Date()
-        let dateObj = this.getDateObj(now)
+        let currentDay = this.options.currentDay
+        let dateObj = this.getDateObj(currentDay ? this.toDate(currentDay) : now)
 
         if (this.mode === 'month') {
             let days = []
@@ -705,7 +714,7 @@ class Calendar extends DateMethod {
     }
 }
 
-window.Calendar = Calendar
+export default Calendar
 
 
 

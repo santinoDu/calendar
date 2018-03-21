@@ -8,18 +8,18 @@
             width: 200px;
         }
         .test{
-            position: fixed;
+            float: right;
         }
     </style>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body style="height: 2000px;">
 hh
-<div class="test">
+<div class="test" style="width: 500px">
     <input type="text" id="calendar"/>
 </div>
 <div>sdfsfa</div>
-<div class="test">
+<div class="test" style="">
     <input style="float: right;" type="text" id="calendar2"/>
 </div>
 <div style="height: 300px"></div>
@@ -36,7 +36,6 @@ hh
                 type: ['day', 'week', 'month'],
                 text: ['自然日', '自然周', '自然年']
             },
-            disablePast: true,
             pickerCb (data) {
                 console.log(data, 'cbbb')
             },
@@ -52,8 +51,10 @@ hh
         renderCb (data) {
             console.log(data)
         },
+        currentDay: '2018,03,25',
         type: 'week',
-        date: 1496732400000,
+        rangeEnd: '2018,03,28',
+        rangeBegin: '2018,03,25',
         disablePast: true,
         defaultFill: false,
         align: 'right'

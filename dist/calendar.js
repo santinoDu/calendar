@@ -69,7 +69,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "672aa5ec50abb0e5065a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "8cc08ac4bb8c7605481c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -714,65 +714,11 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return hotCreateRequire(3)(__webpack_require__.s = 3);
+/******/ 	return hotCreateRequire(0)(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(4)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "i {\n    font-style: normal;\n}\n\n.clearfix::after {\n    content: \"\";\n    display: table;\n    clear: both;\n}\n\n.helper::before{\n    content: \"\";\n    display: inline-block;\n    height: 100%;\n    vertical-align: middle;\n}\n\n.calendar{\n    border: 1px solid #ccc;\n    font-size: 16px;\n    text-align: center;\n    background-color: #fff;\n}\n\n.calendar .calendar-side{\n    float: left;\n}\n\n.calendar .calendar-side .cs-item{\n    border-bottom: 1px solid #ddd;\n    padding: 10px;\n    cursor: pointer;\n}\n\n.calendar .calendar-side .cs-item-active{\n    color: #ff0000;\n}\n\n.calendar .calendar-box{\n    float: left;\n    position: relative;\n    left: -1px;\n    box-sizing: border-box;\n    border-left: 1px solid #ddd;\n    width: 211px;\n}\n\n.calendar .calendar-box .c-header{\n    font-size: 12px;\n    line-height: 2;\n    background-color: #555;\n    color: #fff;\n}\n\n.calendar .c-pannel{\n    display: flex;\n}\n\n.calendar .c-pannel .cp-list{\n    flex: 1;\n}\n\n.calendar .c-pannel .cp-item{\n    display: block;\n    height: 30px;\n    line-height: 30px;\n    cursor: pointer;\n}\n\n.calendar .c-pannel .cp-prev-year,\n.calendar .c-pannel .cp-prev-month{\n    float: left;\n    width: 25px;\n}\n\n.calendar .c-pannel .cp-next-year,\n.calendar .c-pannel .cp-next-month{\n    float: right;\n    width: 25px;\n}\n\n.calendar .c-pannel .cp-year,\n.calendar .c-pannel .cp-month{\n    margin: 0 25px;\n}\n\n.calendar .c-header .ch-item{\n    float: left;\n    width: 30px;\n}\n\n.calendar .c-content{\n    font-size: 14px;\n}\n\n.calendar .c-content .cc-item{\n    float: left;\n    box-sizing: border-box;\n    border-top: 1px solid #ddd;\n    border-right: 1px solid #ddd;\n    width: 30px;\n    height: 26px;\n    line-height: 26px;\n    cursor: pointer;\n}\n\n.calendar .c-content .cc-item:nth-child(7n){\n    border-right: none;\n}\n\n.calendar .c-content .cc-month-item{\n    float: left;\n    width: 25%;\n    height: 52px;\n    line-height: 52px;\n    cursor: pointer;\n}\n\n.calendar .c-content .disabled{\n    color: #c0c0c0;\n}\n\n.calendar .c-content .active{\n    color: #07e007;\n}\n\n.calendar .c-content .select{\n    color: #fff;\n    background-color: #ff6600;\n}\n\n.calendar .c-content .cur{\n    color: #ff0000;\n}\n\n.calendar .c-time{\n    border-top: 1px solid #ddd;\n    padding: 5px 0;\n    font-size: 12px;\n}\n\n.calendar .c-time input{\n    box-sizing: border-box;\n    padding-left: 5px;\n    width: 30px;\n}\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var frame = "<div class=\"calendar clearfix\">\n    <div class=\"calendar-box\">\n        <div class=\"c-pannel\">\n            <div class=\"cp-list\">\n                <span class=\"cp-item cp-prev-year\"><</span>\n                <span class=\"cp-item cp-next-year\">></span>\n                <span class=\"cp-item cp-year\"></span>\n            </div>\n            <div class=\"cp-list cp-month-operator\">\n                <span class=\"cp-item cp-prev-month\"><</span>\n                <span class=\"cp-item cp-next-month\">></span>\n                <span class=\"cp-item cp-month\"></span>\n            </div>\n        </div>\n        <div class=\"c-header clearfix\">\n\n        </div>\n        <div class=\"c-content clearfix\">\n\n        </div>\n        <div class=\"c-time clearfix\">\n            <i>\u65F6\u95F4\u9009\u62E9</i>\n            <input type=\"text\" value=\"00\" min=\"0\" max=\"23\" class=\"c-hour\">\n            <i>:</i>\n            <input type=\"text\" value=\"00\" min=\"0\" max=\"59\" class=\"c-minute\">\n            <i>:</i>\n            <input type=\"text\" value=\"00\" min=\"0\" max=\"59\" class=\"c-second\">\n            <a href=\"javascript:;\" class=\"c-confirm\">\u786E\u5B9A</a>\n        </div>\n    </div>\n</div>";
-
-exports.default = frame;
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(0);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// add the styles to the DOM
-var update = __webpack_require__(5)(content, {});
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(true) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept(0, function() {
-			var newContent = __webpack_require__(0);
-			if(typeof newContent === 'string') newContent = [[module.i, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -780,49 +726,15 @@ if(true) {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _frame = __webpack_require__(1);
-
-var _frame2 = _interopRequireDefault(_frame);
-
-var _style = __webpack_require__(2);
-
-var _style2 = _interopRequireDefault(_style);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-// const frame = `<div class="calendar clearfix">
-//     <div class="calendar-box">
-//         <div class="c-pannel">
-//             <div class="cp-list">
-//                 <span class="cp-item cp-prev-year"><</span>
-//                 <span class="cp-item cp-next-year">></span>
-//                 <span class="cp-item cp-year"></span>
-//             </div>
-//             <div class="cp-list cp-month-operator">
-//                 <span class="cp-item cp-prev-month"><</span>
-//                 <span class="cp-item cp-next-month">></span>
-//                 <span class="cp-item cp-month"></span>
-//             </div>
-//         </div>
-//         <div class="c-header clearfix"></div>
-//         <div class="c-content clearfix"></div>
-//         <div class="c-time clearfix">
-//             <i>时间选择</i>
-//             <input type="text" value="00" min="0" max="23" class="c-hour">
-//             <i>:</i>
-//             <input type="text" value="00" min="0" max="59" class="c-minute">
-//             <i>:</i>
-//             <input type="text" value="00" min="0" max="59" class="c-second">
-//             <a href="javascript:;" class="c-confirm">确定</a>
-//         </div>
-//     </div>
-// </div>`
+// import frame from './../template/frame.js'
+// import css from './../css/style.css'
+var frame = '<div class="calendar clearfix">\n    <div class="calendar-box">\n        <div class="c-pannel">\n            <div class="cp-list">\n                <span class="cp-item cp-prev-year"><</span>\n                <span class="cp-item cp-next-year">></span>\n                <span class="cp-item cp-year"></span>\n            </div>\n            <div class="cp-list cp-month-operator">\n                <span class="cp-item cp-prev-month"><</span>\n                <span class="cp-item cp-next-month">></span>\n                <span class="cp-item cp-month"></span>\n            </div>\n        </div>\n        <div class="c-header clearfix"></div>\n        <div class="c-content clearfix"></div>\n        <div class="c-time clearfix">\n            <i>\u65F6\u95F4\u9009\u62E9</i>\n            <input type="text" value="00" min="0" max="23" class="c-hour">\n            <i>:</i>\n            <input type="text" value="00" min="0" max="59" class="c-minute">\n            <i>:</i>\n            <input type="text" value="00" min="0" max="59" class="c-second">\n            <a href="javascript:;" class="c-confirm">\u786E\u5B9A</a>\n        </div>\n    </div>\n</div>';
 
 var utils = {
     isBubblingToEle: function isBubblingToEle(target, type, value) {
@@ -860,12 +772,8 @@ var utils = {
     },
     classNameOperator: function classNameOperator(selector, operatorType, className) {
         var nodeType = {}.toString.call(selector).slice(8, -1);
-        if (nodeType === 'HTMLCollection') {
+        if (nodeType === 'HTMLCollection' || nodeType === 'NodeList' || nodeType === 'Array') {
             [].slice.call(selector).forEach(function (node) {
-                node.classList[operatorType](className);
-            });
-        } else if (nodeType === 'NodeList' || nodeType === 'Array') {
-            selector.forEach(function (node) {
                 node.classList[operatorType](className);
             });
         } else {
@@ -978,21 +886,26 @@ var DateMethod = function () {
                 year: null,
                 month: null,
                 value: null,
-                rangeBegin: null,
-                rangeEnd: null,
+                rangeBegin: this.options.rangeBegin,
+                rangeEnd: this.options.rangeEnd,
                 disablePast: false,
                 disableFuture: false
             };
             var now = new Date();
             var nowValue = this.getDayBeginTime(now);
             options = Object.assign(defaults, options);
-            if (this.options.disablePast) {
-                var rangeBegin = options.rangeBegin;
+
+            var rangeBegin = options.rangeBegin;
+            if (rangeBegin) {
+                options.rangeBegin = this.getTime(rangeBegin);
+            } else if (this.options.disablePast) {
                 options.rangeBegin = rangeBegin ? Math.max(nowValue, this.getTime(rangeBegin)) : nowValue;
             }
 
-            if (this.options.disableFuture) {
-                var rangeEnd = options.rangeEnd;
+            var rangeEnd = options.rangeEnd;
+            if (rangeEnd) {
+                options.rangeEnd = this.getTime(rangeEnd);
+            } else if (this.options.disableFuture) {
                 options.rangeEnd = rangeEnd ? Math.min(nowValue, this.getTime(rangeEnd)) : nowValue;
             }
 
@@ -1109,7 +1022,9 @@ var Calendar = function (_DateMethod) {
             timePick: false,
             defaultFill: true,
             align: 'left',
-            disableSelect: false
+            disableSelect: false,
+            rangeEnd: '',
+            rangeBegin: ''
         };
 
         _this2.options = Object.assign(defaults, options);
@@ -1179,7 +1094,7 @@ var Calendar = function (_DateMethod) {
             var _this3 = this;
 
             var calendarEl = document.createElement('div');
-            calendarEl.innerHTML = _frame2.default;
+            calendarEl.innerHTML = frame;
             calendarEl.style.display = 'none';
             var sideSelectEl = this.sideSelectHandle();
             var calendarRoot = calendarEl.getElementsByClassName('calendar')[0];
@@ -1359,6 +1274,8 @@ var Calendar = function (_DateMethod) {
                 var children = _this4.daysEl.children;
                 var index = [].indexOf.call(_this4.daysEl.children, target);
                 if (index === -1) return;
+                classNameOperator(_this4.daysEl.querySelectorAll('.select'), 'remove', 'select');
+
                 if (_this4.mode === 'week') {
                     var rows = Math.floor(index / 7);
                     var begin = rows * 7;
@@ -1447,6 +1364,9 @@ var Calendar = function (_DateMethod) {
     }, {
         key: 'showCalendar',
         value: function showCalendar() {
+            Array.prototype.slice.call(document.querySelectorAll('.calendar')).forEach(function (node) {
+                node.parentNode.style.display = 'none';
+            });
             var pos = utils.getElPos(this.el);
             var align = this.options.align;
             var alignValue = align === 'right' ? pos.right : pos.left;
@@ -1558,479 +1478,6 @@ var Calendar = function (_DateMethod) {
 }(DateMethod);
 
 window.Calendar = Calendar;
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
-
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-var stylesInDom = {},
-	memoize = function(fn) {
-		var memo;
-		return function () {
-			if (typeof memo === "undefined") memo = fn.apply(this, arguments);
-			return memo;
-		};
-	},
-	isOldIE = memoize(function() {
-		// Test for IE <= 9 as proposed by Browserhacks
-		// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
-		// Tests for existence of standard globals is to allow style-loader 
-		// to operate correctly into non-standard environments
-		// @see https://github.com/webpack-contrib/style-loader/issues/177
-		return window && document && document.all && !window.atob;
-	}),
-	getElement = (function(fn) {
-		var memo = {};
-		return function(selector) {
-			if (typeof memo[selector] === "undefined") {
-				memo[selector] = fn.call(this, selector);
-			}
-			return memo[selector]
-		};
-	})(function (styleTarget) {
-		return document.querySelector(styleTarget)
-	}),
-	singletonElement = null,
-	singletonCounter = 0,
-	styleElementsInsertedAtTop = [],
-	fixUrls = __webpack_require__(6);
-
-module.exports = function(list, options) {
-	if(typeof DEBUG !== "undefined" && DEBUG) {
-		if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
-	}
-
-	options = options || {};
-	options.attrs = typeof options.attrs === "object" ? options.attrs : {};
-
-	// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-	// tags it will allow on a page
-	if (typeof options.singleton === "undefined") options.singleton = isOldIE();
-
-	// By default, add <style> tags to the <head> element
-	if (typeof options.insertInto === "undefined") options.insertInto = "head";
-
-	// By default, add <style> tags to the bottom of the target
-	if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
-
-	var styles = listToStyles(list);
-	addStylesToDom(styles, options);
-
-	return function update(newList) {
-		var mayRemove = [];
-		for(var i = 0; i < styles.length; i++) {
-			var item = styles[i];
-			var domStyle = stylesInDom[item.id];
-			domStyle.refs--;
-			mayRemove.push(domStyle);
-		}
-		if(newList) {
-			var newStyles = listToStyles(newList);
-			addStylesToDom(newStyles, options);
-		}
-		for(var i = 0; i < mayRemove.length; i++) {
-			var domStyle = mayRemove[i];
-			if(domStyle.refs === 0) {
-				for(var j = 0; j < domStyle.parts.length; j++)
-					domStyle.parts[j]();
-				delete stylesInDom[domStyle.id];
-			}
-		}
-	};
-};
-
-function addStylesToDom(styles, options) {
-	for(var i = 0; i < styles.length; i++) {
-		var item = styles[i];
-		var domStyle = stylesInDom[item.id];
-		if(domStyle) {
-			domStyle.refs++;
-			for(var j = 0; j < domStyle.parts.length; j++) {
-				domStyle.parts[j](item.parts[j]);
-			}
-			for(; j < item.parts.length; j++) {
-				domStyle.parts.push(addStyle(item.parts[j], options));
-			}
-		} else {
-			var parts = [];
-			for(var j = 0; j < item.parts.length; j++) {
-				parts.push(addStyle(item.parts[j], options));
-			}
-			stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
-		}
-	}
-}
-
-function listToStyles(list) {
-	var styles = [];
-	var newStyles = {};
-	for(var i = 0; i < list.length; i++) {
-		var item = list[i];
-		var id = item[0];
-		var css = item[1];
-		var media = item[2];
-		var sourceMap = item[3];
-		var part = {css: css, media: media, sourceMap: sourceMap};
-		if(!newStyles[id])
-			styles.push(newStyles[id] = {id: id, parts: [part]});
-		else
-			newStyles[id].parts.push(part);
-	}
-	return styles;
-}
-
-function insertStyleElement(options, styleElement) {
-	var styleTarget = getElement(options.insertInto)
-	if (!styleTarget) {
-		throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
-	}
-	var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
-	if (options.insertAt === "top") {
-		if(!lastStyleElementInsertedAtTop) {
-			styleTarget.insertBefore(styleElement, styleTarget.firstChild);
-		} else if(lastStyleElementInsertedAtTop.nextSibling) {
-			styleTarget.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
-		} else {
-			styleTarget.appendChild(styleElement);
-		}
-		styleElementsInsertedAtTop.push(styleElement);
-	} else if (options.insertAt === "bottom") {
-		styleTarget.appendChild(styleElement);
-	} else {
-		throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
-	}
-}
-
-function removeStyleElement(styleElement) {
-	styleElement.parentNode.removeChild(styleElement);
-	var idx = styleElementsInsertedAtTop.indexOf(styleElement);
-	if(idx >= 0) {
-		styleElementsInsertedAtTop.splice(idx, 1);
-	}
-}
-
-function createStyleElement(options) {
-	var styleElement = document.createElement("style");
-	options.attrs.type = "text/css";
-
-	attachTagAttrs(styleElement, options.attrs);
-	insertStyleElement(options, styleElement);
-	return styleElement;
-}
-
-function createLinkElement(options) {
-	var linkElement = document.createElement("link");
-	options.attrs.type = "text/css";
-	options.attrs.rel = "stylesheet";
-
-	attachTagAttrs(linkElement, options.attrs);
-	insertStyleElement(options, linkElement);
-	return linkElement;
-}
-
-function attachTagAttrs(element, attrs) {
-	Object.keys(attrs).forEach(function (key) {
-		element.setAttribute(key, attrs[key]);
-	});
-}
-
-function addStyle(obj, options) {
-	var styleElement, update, remove;
-
-	if (options.singleton) {
-		var styleIndex = singletonCounter++;
-		styleElement = singletonElement || (singletonElement = createStyleElement(options));
-		update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
-		remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
-	} else if(obj.sourceMap &&
-		typeof URL === "function" &&
-		typeof URL.createObjectURL === "function" &&
-		typeof URL.revokeObjectURL === "function" &&
-		typeof Blob === "function" &&
-		typeof btoa === "function") {
-		styleElement = createLinkElement(options);
-		update = updateLink.bind(null, styleElement, options);
-		remove = function() {
-			removeStyleElement(styleElement);
-			if(styleElement.href)
-				URL.revokeObjectURL(styleElement.href);
-		};
-	} else {
-		styleElement = createStyleElement(options);
-		update = applyToTag.bind(null, styleElement);
-		remove = function() {
-			removeStyleElement(styleElement);
-		};
-	}
-
-	update(obj);
-
-	return function updateStyle(newObj) {
-		if(newObj) {
-			if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
-				return;
-			update(obj = newObj);
-		} else {
-			remove();
-		}
-	};
-}
-
-var replaceText = (function () {
-	var textStore = [];
-
-	return function (index, replacement) {
-		textStore[index] = replacement;
-		return textStore.filter(Boolean).join('\n');
-	};
-})();
-
-function applyToSingletonTag(styleElement, index, remove, obj) {
-	var css = remove ? "" : obj.css;
-
-	if (styleElement.styleSheet) {
-		styleElement.styleSheet.cssText = replaceText(index, css);
-	} else {
-		var cssNode = document.createTextNode(css);
-		var childNodes = styleElement.childNodes;
-		if (childNodes[index]) styleElement.removeChild(childNodes[index]);
-		if (childNodes.length) {
-			styleElement.insertBefore(cssNode, childNodes[index]);
-		} else {
-			styleElement.appendChild(cssNode);
-		}
-	}
-}
-
-function applyToTag(styleElement, obj) {
-	var css = obj.css;
-	var media = obj.media;
-
-	if(media) {
-		styleElement.setAttribute("media", media)
-	}
-
-	if(styleElement.styleSheet) {
-		styleElement.styleSheet.cssText = css;
-	} else {
-		while(styleElement.firstChild) {
-			styleElement.removeChild(styleElement.firstChild);
-		}
-		styleElement.appendChild(document.createTextNode(css));
-	}
-}
-
-function updateLink(linkElement, options, obj) {
-	var css = obj.css;
-	var sourceMap = obj.sourceMap;
-
-	/* If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
-	and there is no publicPath defined then lets turn convertToAbsoluteUrls
-	on by default.  Otherwise default to the convertToAbsoluteUrls option
-	directly
-	*/
-	var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
-
-	if (options.convertToAbsoluteUrls || autoFixUrls){
-		css = fixUrls(css);
-	}
-
-	if(sourceMap) {
-		// http://stackoverflow.com/a/26603875
-		css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
-	}
-
-	var blob = new Blob([css], { type: "text/css" });
-
-	var oldSrc = linkElement.href;
-
-	linkElement.href = URL.createObjectURL(blob);
-
-	if(oldSrc)
-		URL.revokeObjectURL(oldSrc);
-}
-
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-
-/**
- * When source maps are enabled, `style-loader` uses a link element with a data-uri to
- * embed the css on the page. This breaks all relative urls because now they are relative to a
- * bundle instead of the current page.
- *
- * One solution is to only use full urls, but that may be impossible.
- *
- * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
- *
- * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
- *
- */
-
-module.exports = function (css) {
-  // get current location
-  var location = typeof window !== "undefined" && window.location;
-
-  if (!location) {
-    throw new Error("fixUrls requires window.location");
-  }
-
-	// blank or null?
-	if (!css || typeof css !== "string") {
-	  return css;
-  }
-
-  var baseUrl = location.protocol + "//" + location.host;
-  var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
-
-	// convert each url(...)
-	/*
-	This regular expression is just a way to recursively match brackets within
-	a string.
-
-	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
-	   (  = Start a capturing group
-	     (?:  = Start a non-capturing group
-	         [^)(]  = Match anything that isn't a parentheses
-	         |  = OR
-	         \(  = Match a start parentheses
-	             (?:  = Start another non-capturing groups
-	                 [^)(]+  = Match anything that isn't a parentheses
-	                 |  = OR
-	                 \(  = Match a start parentheses
-	                     [^)(]*  = Match anything that isn't a parentheses
-	                 \)  = Match a end parentheses
-	             )  = End Group
-              *\) = Match anything and then a close parens
-          )  = Close non-capturing group
-          *  = Match anything
-       )  = Close capturing group
-	 \)  = Match a close parens
-
-	 /gi  = Get all matches, not the first.  Be case insensitive.
-	 */
-	var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(fullMatch, origUrl) {
-		// strip quotes (if they exist)
-		var unquotedOrigUrl = origUrl
-			.trim()
-			.replace(/^"(.*)"$/, function(o, $1){ return $1; })
-			.replace(/^'(.*)'$/, function(o, $1){ return $1; });
-
-		// already a full url? no change
-		if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/)/i.test(unquotedOrigUrl)) {
-		  return fullMatch;
-		}
-
-		// convert the url to a full url
-		var newUrl;
-
-		if (unquotedOrigUrl.indexOf("//") === 0) {
-		  	//TODO: should we add protocol?
-			newUrl = unquotedOrigUrl;
-		} else if (unquotedOrigUrl.indexOf("/") === 0) {
-			// path should be relative to the base url
-			newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
-		} else {
-			// path should be relative to current directory
-			newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
-		}
-
-		// send back the fixed url(...)
-		return "url(" + JSON.stringify(newUrl) + ")";
-	});
-
-	// send back the fixed css
-	return fixedCss;
-};
-
 
 /***/ })
 /******/ ]);

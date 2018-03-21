@@ -6,8 +6,8 @@ module.exports = {
         main: './src/js/main.js'
     },
     output: {
-        filename: 'calendar.js',
-        path: path.resolve(__dirname, 'dist'),
+        filename: './index.js',
+        path: path.resolve(__dirname),
         library: 'Calendar',
         libraryTarget: 'umd'
     },

@@ -42,7 +42,8 @@ or
       timePick: false,
       defaultFill: true,
       align: 'left',
-      disableSelect: false
+      disableSelect: false,
+      currentDay: '2018,03,25'
   }
 ```
 
